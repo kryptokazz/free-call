@@ -6,6 +6,12 @@ export default function App() {
   const [remembered, setRemembered] = useState({});
   const [percentages, setPercentages] = useState({});
 
+  const [customField, setCustomField] = useState("");
+
+  const handleCustomField = (e) => {
+    setCustomField(e.target.value);
+  }
+
   const addField = () => {
     const newField = {
       id: uuidv4(),
@@ -190,9 +196,10 @@ export default function App() {
                 <input
                   type="text"
                   placeholder="Type of Custom Field"
-                  onChange={(e) => addCustomField(field.id, e.target.value)}
+                  value={customField}
+                  onChange={handleCustomField}
                 />
-                <button type="button">Add Custom Field</button>
+                <button type="button" onClick={() => addCustomField(field.id,customField)}>Add Custom Field</button>
               </div>
             </div>
 
